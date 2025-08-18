@@ -1,0 +1,52 @@
+class Student:
+    def init(self, name: str, age: int, gpa: float):
+        self._name = name
+        self._age = age
+        self._gpa = float(gpa)
+def get_name(self) -> str:
+    return self._name
+
+def get_age(self) -> int:
+    return self._age
+
+def get_gpa(self) -> float:
+    return self._gpa
+
+#Сеттеры
+def set_name(self, name: str):
+    self._name = name
+
+def set_age(self, age: int):
+    if age < 0:
+        raise ValueError("Возраст не может быть отрицательным")
+    self._age = age
+
+def set_gpa(self, gpa: float):
+    if not (0.0 <= gpa <= 10.0):
+        raise ValueError("Средний балл должен быть в диапазоне 0.0–10.0")
+    self._gpa = float(gpa)
+
+#Вывод информации
+def info(self) -> str:
+    return f"Студент: {self._name}, Возраст: {self._age}, Средний балл: {self._gpa:.2f}"
+
+ #Оценка по среднему баллу
+def grade(self) -> str:
+    if self._gpa > 8.0:
+        return "Отлично"
+    elif 6.0 <= self._gpa <= 8.0:
+        return "Хорошо"
+    elif 4.0 <= self._gpa < 6.0:
+        return "Удовлетворительно"
+    else:
+        return "Неудовлетворительно"
+
+ #Дополнительные методы
+def is_scholarship(self) -> bool:
+   # Например: стипендия при 7.5 и выше
+    return self._gpa >= 7.5
+
+def update_gpa(self, new_grade: float, weight: float = 1.0):
+    #Пример усреднения: текущий gpa = (old * total_weight + new_grade * weight) / (total_weight + weight)
+    #Для простоты считаем, что total_weight = 1.0 (можно расширить хранением истории)
+    #self._gpa = (self._gpa + new_grade * weight) / (1.0 + weight)
