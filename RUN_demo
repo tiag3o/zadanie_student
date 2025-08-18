@@ -1,0 +1,19 @@
+from student import Student
+
+def main():
+    s1 = Student("Анна Капустина", 20, 8.9)
+    s2 = Student("Иван Иванов", 19, 6.7)
+    s3 = Student("Мария Самойлова", 21, 4.3)
+    students = [s1, s2, s3]
+
+for s in students:
+    print(s.info())
+    print("Оценка:", s.grade())
+    print("Стипендия:", "Да" if s.is_scholarship() else "Нет")
+    print()
+
+s3.set_gpa(5.2)
+print("Обновлённая информация:", s3.info())
+print("Обновлённая оценка:", s3.grade())
+if name == "main":
+    main()
