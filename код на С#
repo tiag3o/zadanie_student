@@ -83,7 +83,7 @@ public class Program
         // Создание студентов
         Student s1 = new Student("Анна Капустина", 20, 8.9);
         Student s2 = new Student("Иван Иванов", 19, 6.7);
-        Student s3 = new Student("Мария", 21, 4.3);
+        Student s3 = new Student("Мария Самойлова", 21, 4.3);
         
         Student[] students = { s1, s2, s3 };
 
