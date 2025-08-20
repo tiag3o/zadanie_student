@@ -96,7 +96,6 @@ public class Program
             Console.WriteLine();
         }
 
-        // Демонстрация обновления GPA
         s3.GPA = 5.2;
         Console.WriteLine($"Обновлённая информация: {s3.Info()}");
     }
