@@ -1,0 +1,103 @@
+using System;
+
+public class Student
+{
+    // Приватные поля
+    private string _name;
+    private int _age;
+    private double _gpa;
+
+    public Student(string name, int age, double gpa)
+    {
+        _name = name;
+        _age = age;
+        _gpa = gpa;
+    }
+
+    public string Name
+    {
+        get { return _name; }
+        set { _name = value; }
+    }
+
+    public int Age
+    {
+        get { return _age; }
+        set 
+        {
+            if (value < 0)
+                throw new ArgumentException("Возраст не может быть отрицательным");
+            _age = value;
+        }
+    }
+
+    public double GPA
+    {
+        get { return _gpa; }
+        set
+        {
+            if (value < 0.0 || value > 10.0)
+                throw new ArgumentException("Средний балл должен быть в диапазоне 0.0–10.0");
+            _gpa = value;
+        }
+    }
+
+    // Вывод информации
+    public string Info()
+    {
+        return $"Студент: {_name}, Возраст: {_age}, Средний балл: {_gpa:F2}";
+    }
+
+    // Оценка по среднему баллу
+    public string Grade()
+    {
+        if (_gpa > 8.0)
+            return "Отлично";
+        else if (_gpa >= 6.0)
+            return "Хорошо";
+        else if (_gpa >= 4.0)
+            return "Удовлетворительно";
+        else
+            return "Неудовлетворительно";
+    }
+
+    // Проверка на стипендию
+    public bool IsScholarship()
+    {
+        return _gpa >= 7.5;
+    }
+
+    public void UpdateGPA(double newGrade, double weight = 1.0)
+    {
+        _gpa = (_gpa + newGrade * weight) / (1.0 + weight);
+    }
+}
+
+
+
+
+public class Program
+{
+    public static void Main()
+    {
+        // Создание студентов
+        Student s1 = new Student("Анна Капустина", 20, 8.9);
+        Student s2 = new Student("Иван Иванов", 19, 6.7);
+        Student s3 = new Student("Мария", 21, 4.3);
+        
+        Student[] students = { s1, s2, s3 };
+
+        // Вывод информации
+        foreach (var s in students)
+        {
+            Console.WriteLine(s.Info());
+            Console.WriteLine($"Оценка: {s.Grade()}");
+            Console.WriteLine($"Стипендия: {(s.IsScholarship() ? "Да" : "Нет")}");
+            Console.WriteLine();
+        }
+
+        // Демонстрация обновления GPA
+        s3.GPA = 5.2;
+        Console.WriteLine($"Обновлённая информация: {s3.Info()}");
+    }
+}
